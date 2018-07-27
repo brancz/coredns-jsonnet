@@ -147,6 +147,7 @@ local k = import 'ksonnet/ksonnet.beta.3/k.libsonnet';
         'kubernetes.io/cluster-service': 'true',
         'kubernetes.io/name': 'CoreDNS',
       }) +
-      service.mixin.metadata.withNamespace($._config.namespace),
+      service.mixin.metadata.withNamespace($._config.namespace) +
+      service.mixin.spec.withClusterIp($._config.coredns.clusterIP),
   },
 }
